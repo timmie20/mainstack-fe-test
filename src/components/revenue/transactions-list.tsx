@@ -5,34 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Download, ChevronDown } from "lucide-react";
 import { TransactionRow } from "./transaction-row";
 import { Separator } from "../ui/separator";
-
-interface TransactionMetadata {
-  name: string;
-  type: string;
-  email: string;
-  quantity: number;
-  country: string;
-  product_name: string;
-}
-
-interface Transaction {
-  amount: number;
-  metadata: TransactionMetadata;
-  payment_reference: string;
-  status: string;
-  type: "deposit" | "withdrawal";
-  date: string;
-}
+import type { Transaction } from "@/types";
 
 interface TransactionsListProps {
   transactions: Transaction[];
-  title?: string;
   subtitle?: string;
 }
 
 export function TransactionsList({
   transactions,
-  title = "24 Transactions",
   subtitle = "Your transactions for the last 7 days",
 }: TransactionsListProps) {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -47,7 +28,9 @@ export function TransactionsList({
       {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+          <h2 className="text-2xl font-bold text-foreground">
+            {transactions.length} Transactions
+          </h2>
           <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
         </div>
 
@@ -79,11 +62,8 @@ export function TransactionsList({
       {/* Transactions List */}
       <div className="space-y-0">
         {transactions.length > 0 ? (
-          transactions.map((transaction) => (
-            <TransactionRow
-              key={transaction.payment_reference}
-              transaction={transaction}
-            />
+          transactions.map((transaction, idx) => (
+            <TransactionRow key={idx} transaction={transaction} />
           ))
         ) : (
           <div className="py-8 text-center text-muted-foreground">

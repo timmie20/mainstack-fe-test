@@ -14,7 +14,7 @@ export function TransactionRow({ transaction }: TransactionRowProps) {
   const Icon = isDeposit ? ArrowDownLeft : ArrowUpRight;
 
   return (
-    <div className="flex items-center justify-between py-4 px-0 border-b border-border last:border-b-0">
+    <div className="flex items-center justify-between py-4 px-0">
       {/* Left: Icon and Product Info */}
       <div className="flex items-center gap-4 flex-1">
         <div className={`${iconBgColor} rounded-full p-3 flex-shrink-0`}>
@@ -29,7 +29,7 @@ export function TransactionRow({ transaction }: TransactionRowProps) {
           <p className="text-sm text-muted-foreground truncate">
             {isDeposit && transaction.status === "successful"
               ? transaction.metadata.name
-              : "pending"}
+              : transaction.status}
           </p>
         </div>
       </div>

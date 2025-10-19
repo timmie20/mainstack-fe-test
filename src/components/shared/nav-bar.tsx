@@ -5,7 +5,7 @@ import { Bell, MessageSquare, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { getNavIcon } from "@/lib/icons";
-import AppLogo from "../app-logo";
+import AppLogo from "../../assets/app-logo";
 import { motion } from "motion/react";
 
 const NAV_ITEMS = [

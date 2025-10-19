@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: Degular;
+  src: url("../src/assets/fonts/DegularDisplay-Regular.otf");
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -39,6 +44,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-degular: Degular, "sans-serif";
 }
 
 :root {
@@ -115,6 +122,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-degular;
   }
 }

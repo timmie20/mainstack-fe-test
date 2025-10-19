@@ -16,7 +16,7 @@ interface ChartLineDefaultProps {
 }
 
 const chartData = [
-  { month: "May 31", balance: 100 },
+  { month: "May 31", balance: 10 },
   { month: "April 1", balance: 200 },
   { month: "April 5", balance: 120 },
   { month: "April 10", balance: 180 },

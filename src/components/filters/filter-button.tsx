@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Filter } from "lucide-react";
 import type { FilterState } from "./filter-drawer";
 
 interface FilterButtonProps {
@@ -29,7 +28,6 @@ export function FilterButton({ onClick, filters }: FilterButtonProps) {
       onClick={onClick}
       className="relative gap-2 bg-gray-50 py-3 text-base font-semibold w-fit h-12 min-w-[106px] rounded-full"
     >
-      <Filter className="w-4 h-4 mr-2" />
       Filter
       {filterCount > 0 && (
         <Badge

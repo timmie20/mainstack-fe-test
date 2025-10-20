@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Bell, MessageSquare, Menu } from "lucide-react";
+import { Bell, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { getNavIcon } from "@/lib/icons";
 import AppLogo from "../../assets/app-logo";
 import { motion } from "motion/react";
+import { ProfileDropdown } from "../profile-dropdown";
+import UserAvatar from "../user-avatar";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home", icon: "home" },
@@ -52,20 +53,11 @@ export function Navbar() {
           >
             <MessageSquare className="h-5 w-5" />
           </Button>
-          <div className="flex gap-2 pr-3 pl-[5px] py-1 bg-[#EFF1F6] rounded-full items-center justify-center">
-            <Avatar className="h-8 w-8 bg-primary text-primary-foreground">
-              <AvatarFallback className="bg-primary text-primary-foreground font-semibold text-xs">
-                OI
-              </AvatarFallback>
-            </Avatar>{" "}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-foreground hover:bg-muted"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-          </div>
+          <ProfileDropdown>
+            <button className="flex gap-2 pr-3 pl-[5px] py-1 bg-[#EFF1F6] rounded-full items-center justify-center">
+              <UserAvatar />
+            </button>
+          </ProfileDropdown>
         </div>
       </div>
     </nav>

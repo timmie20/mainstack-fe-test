@@ -28,3 +28,9 @@ export type ChartData = {
   month: string;
   balance: number;
 };
+
+export interface User {
+  first_name: string;
+  last_name: string;
+  email: string;
+}

@@ -3,10 +3,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useUserStore } from "@/store/user-store";
 import type { PropsWithChildren } from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+import { getInitials } from "@/lib/helpers";
 
 export function ProfileDropdown({ children }: PropsWithChildren) {
+  const user = useUserStore((state) => state.user);
+
+  const initials = getInitials(user?.first_name, user?.last_name);
+  const fullName = user ? `${user.first_name} ${user.last_name}` : "User";
+  const email = user?.email || "No email";
+
   return (
     <Popover>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
@@ -16,13 +24,15 @@ export function ProfileDropdown({ children }: PropsWithChildren) {
             <div>
               <Avatar className="size-10 bg-primary text-primary-foreground">
                 <AvatarFallback className="bg-primary text-primary-foreground font-semibold text-base">
-                  OI
+                  {initials}
                 </AvatarFallback>
               </Avatar>
             </div>
             <div>
-              <p className="text-lg text-foreground font-semibold">John Doe</p>
-              <p className="text-sm text-muted-foreground">jane@example.com</p>
+              <p className="text-lg text-foreground font-semibold">
+                {fullName}
+              </p>
+              <p className="text-sm text-muted-foreground">{email}</p>
             </div>
           </div>
 

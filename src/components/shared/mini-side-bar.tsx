@@ -1,5 +1,6 @@
 import { Home, DollarSign, BarChart3, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 const navItems = [
   {
@@ -26,7 +27,7 @@ const navItems = [
 
 export default function MiniSideBar() {
   return (
-    <aside className="fixed left-6 top-[40%] -translate-y-1/2 z-50">
+    <aside className="fixed left-6 top-[40%] -translate-y-1/2 z-50 :hover-scale-75">
       <nav className="bg-background border border-border rounded-full shadow-lg p-3">
         <ul className="flex flex-col gap-3">
           {navItems.map((item) => {
@@ -34,20 +35,23 @@ export default function MiniSideBar() {
             const isActive = location.pathname === item.href;
 
             return (
-              <li
+              <motion.li
                 key={item.href}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className={cn(
                   "flex items-center justify-center size-8 rounded-full transition-colors",
-                  "hover:bg-muted",
+                  "",
                   isActive
                     ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground hover:bg-muted"
                 )}
                 aria-label={item.label}
                 title={item.label}
               >
                 <Icon className="size-4" />
-              </li>
+              </motion.li>
             );
           })}
         </ul>

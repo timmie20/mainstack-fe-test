@@ -40,11 +40,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <div>
-      <div className="max-w-[1406px] mx-auto">
-        <Navbar />
-        <MiniSideBar />
-        {children}
+      <div className="fixed top-0 left-0 right-0 z-40">
+        <div className="max-w-[1406px] mx-auto">
+          <Navbar />
+        </div>
       </div>
+
+      <MiniSideBar />
+
+      {/* Main Content with top padding to account for fixed navbar */}
+      <div className="max-w-[1406px] mx-auto pt-40">{children}</div>
     </div>
   );
 }

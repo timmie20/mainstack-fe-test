@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, ChevronDown } from "lucide-react";
+import { Download } from "lucide-react";
 import { TransactionRow } from "./transaction-row";
 import { Separator } from "../ui/separator";
 import type { Transaction } from "@/types";
+import { FilterButton } from "../filters/filter-button";
+import { FilterDrawer, type FilterState } from "../filters/filter-drawer";
 
 interface TransactionsListProps {
   transactions: Transaction[];
@@ -17,6 +20,11 @@ export function TransactionsList({
   subtitle = "Your transactions for the last 7 days",
 }: TransactionsListProps) {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [appliedFilters, setAppliedFilters] = useState<FilterState>({
+    dateRange: { preset: "today" },
+    transactionTypes: [],
+    transactionStatuses: [],
+  });
 
   const handleExport = () => {
     // Export functionality can be implemented here
@@ -36,15 +44,11 @@ export function TransactionsList({
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            className="gap-2 bg-gray-50 py-3 text-base font-semibold h-12 w-[106px] rounded-full"
-            onClick={() => setFilterOpen(!filterOpen)}
-          >
-            Filter
-            <ChevronDown className="w-4 h-4" />
-          </Button>
+          <FilterButton
+            onClick={() => setFilterOpen(true)}
+            filters={appliedFilters}
+          />
+
           <Button
             variant="outline"
             size="sm"
@@ -71,6 +75,12 @@ export function TransactionsList({
           </div>
         )}
       </div>
+
+      <FilterDrawer
+        isOpen={filterOpen}
+        onClose={() => setFilterOpen(false)}
+        onApply={(filters) => setAppliedFilters(filters)}
+      />
     </div>
   );
 }

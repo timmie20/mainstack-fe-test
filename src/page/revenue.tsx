@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { formatDateChart } from "@/lib/helpers";
 import type { ChartData } from "@/types";
 import { isApiError } from "@/lib/api";
+import Loader from "@/components/loader";
 
 // Type guard to check if result is an error
 
@@ -42,7 +43,7 @@ export default function Revenue() {
       }))
       .reverse() ?? [];
 
-  if (isLoading) return <p>Loading all data...</p>;
+  if (isLoading) return <Loader />;
   if (isError || !data) return <p>Failed to load data.</p>;
 
   return (

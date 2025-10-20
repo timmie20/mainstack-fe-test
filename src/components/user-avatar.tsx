@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { useUserStore } from "@/store/user-store";
@@ -14,13 +13,9 @@ export default function UserAvatar() {
           {getInitials(user?.first_name, user?.last_name)}
         </AvatarFallback>
       </Avatar>{" "}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="text-foreground hover:bg-muted"
-      >
+      <div className="text-foreground hover:bg-muted">
         <Menu className="h-5 w-5" />
-      </Button>
+      </div>
     </>
   );
 }

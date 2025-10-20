@@ -20,12 +20,12 @@ interface DateRangeFilterProps {
 export function DateRangeFilter({ value, onChange }: DateRangeFilterProps) {
   return (
     <div className="space-y-4">
-      <Label className="text-sm font-medium">Date Range</Label>
+      <Label className="text-base font-semibold">Date Range</Label>
 
       <div className="space-y-3">
         <div className="flex gap-2">
           <Popover>
-            <PopoverTrigger asChild>
+            <PopoverTrigger asChild className="h-12">
               <Button
                 variant="outline"
                 size="sm"
@@ -35,8 +35,9 @@ export function DateRangeFilter({ value, onChange }: DateRangeFilterProps) {
                 {value.startDate || "Start date"}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent className="w-full p-0" align="start">
               <Calendar
+                className="w-full"
                 mode="single"
                 selected={
                   value.startDate ? new Date(value.startDate) : undefined
@@ -52,7 +53,7 @@ export function DateRangeFilter({ value, onChange }: DateRangeFilterProps) {
           </Popover>
 
           <Popover>
-            <PopoverTrigger asChild>
+            <PopoverTrigger asChild className="h-12">
               <Button
                 variant="outline"
                 size="sm"

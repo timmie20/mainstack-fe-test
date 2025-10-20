@@ -46,10 +46,10 @@ export function TransactionTypeFilter({
 
   return (
     <div className="space-y-4">
-      <Label className="text-sm font-medium">Transaction Type</Label>
+      <Label className="text-base font-semibold">Transaction Type</Label>
 
       <Popover open={isOpen} onOpenChange={setIsOpen}>
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild className="h-12">
           <Button
             variant="outline"
             className="w-full justify-between bg-transparent"
@@ -60,7 +60,7 @@ export function TransactionTypeFilter({
             <ChevronDown className="w-4 h-4 ml-2 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-56 p-4" align="start">
+        <PopoverContent className="flex-1  p-4" align="start">
           <div className="space-y-3">
             {transactionTypes.map((type) => (
               <div key={type.id} className="flex items-center space-x-2">
@@ -68,10 +68,11 @@ export function TransactionTypeFilter({
                   id={type.id}
                   checked={value.includes(type.id)}
                   onCheckedChange={() => handleToggle(type.id)}
+                  className="size-5"
                 />
                 <Label
                   htmlFor={type.id}
-                  className="text-sm font-normal cursor-pointer"
+                  className="text-base font-semibold cursor-pointer"
                 >
                   {type.label}
                 </Label>

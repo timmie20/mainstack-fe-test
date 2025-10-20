@@ -64,7 +64,7 @@ export function FilterDrawer({ isOpen, onClose, onApply }: FilterDrawerProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-background border-l border-border z-50 flex flex-col shadow-lg rounded-[20px] "
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-white border-l border-border z-50 flex flex-col shadow-lg rounded-[20px] "
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-border">
@@ -78,47 +78,39 @@ export function FilterDrawer({ isOpen, onClose, onApply }: FilterDrawerProps) {
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
-              <div className="bg-white rounded-lg shadow-sm border border-border p-4">
-                <DateRangeFilter
-                  value={filters.dateRange}
-                  onChange={(dateRange) =>
-                    setFilters({ ...filters, dateRange })
-                  }
-                />
-              </div>
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 w-full">
+              <DateRangeFilter
+                value={filters.dateRange}
+                onChange={(dateRange) => setFilters({ ...filters, dateRange })}
+              />
 
-              <div className="bg-white rounded-lg shadow-sm border border-border p-4">
-                <TransactionTypeFilter
-                  value={filters.transactionTypes}
-                  onChange={(transactionTypes) =>
-                    setFilters({ ...filters, transactionTypes })
-                  }
-                />
-              </div>
+              <TransactionTypeFilter
+                value={filters.transactionTypes}
+                onChange={(transactionTypes) =>
+                  setFilters({ ...filters, transactionTypes })
+                }
+              />
 
-              <div className="bg-white rounded-lg shadow-sm border border-border p-4">
-                <TransactionStatusFilter
-                  value={filters.transactionStatuses}
-                  onChange={(transactionStatuses) =>
-                    setFilters({ ...filters, transactionStatuses })
-                  }
-                />
-              </div>
+              <TransactionStatusFilter
+                value={filters.transactionStatuses}
+                onChange={(transactionStatuses) =>
+                  setFilters({ ...filters, transactionStatuses })
+                }
+              />
             </div>
 
             {/* Footer */}
-            <div className="border-t border-border p-6 flex gap-3">
+            <div className=" p-6 flex gap-3">
               <Button
                 variant="outline"
                 onClick={handleClear}
-                className="flex-1 bg-transparent"
+                className="flex-1 bg-transparent rounded-full py-3 px-6"
               >
                 Clear
               </Button>
               <Button
                 onClick={handleApply}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
+                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90  rounded-full py-3 px-6"
               >
                 Apply
               </Button>

@@ -43,10 +43,10 @@ export function TransactionStatusFilter({
 
   return (
     <div className="space-y-4">
-      <Label className="text-sm font-medium">Transaction Status</Label>
+      <Label className="text-base font-semibold">Transaction Status</Label>
 
       <Popover open={isOpen} onOpenChange={setIsOpen}>
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild className="h-12">
           <Button
             variant="outline"
             className="w-full justify-between bg-transparent"
@@ -57,7 +57,7 @@ export function TransactionStatusFilter({
             <ChevronDown className="w-4 h-4 ml-2 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-56 p-4" align="start">
+        <PopoverContent className="flex-1 p-4" align="start">
           <div className="space-y-3">
             {transactionStatuses.map((status) => (
               <div key={status.id} className="flex items-center space-x-2">
@@ -65,10 +65,11 @@ export function TransactionStatusFilter({
                   id={status.id}
                   checked={value.includes(status.id)}
                   onCheckedChange={() => handleToggle(status.id)}
+                  className="size-5"
                 />
                 <Label
                   htmlFor={status.id}
-                  className="text-sm font-normal cursor-pointer"
+                  className="text-base font-semibold cursor-pointer"
                 >
                   {status.label}
                 </Label>

@@ -21,44 +21,42 @@ export function Navbar() {
   const [activeItem, setActiveItem] = useState("revenue");
 
   return (
-    <nav className="">
-      <div className="mt-4 w-full mx-auto border-2 border-white shadow-sm rounded-full flex items-center justify-between px-6 py-4">
-        <AppLogo />
+    <nav className="mt-4 w-full bg-white mx-auto border-2 border-white shadow-sm rounded-full flex items-center justify-between px-6 py-4">
+      <AppLogo />
 
-        {/* Center Navigation */}
-        <div className="flex items-center gap-5">
-          {NAV_ITEMS.map((item) => (
-            <NavItem
-              key={item.id}
-              item={item}
-              isActive={activeItem === item.id}
-              onClick={() => setActiveItem(item.id)}
-            />
-          ))}
-        </div>
+      {/* Center Navigation */}
+      <div className="flex items-center gap-5">
+        {NAV_ITEMS.map((item) => (
+          <NavItem
+            key={item.id}
+            item={item}
+            isActive={activeItem === item.id}
+            onClick={() => setActiveItem(item.id)}
+          />
+        ))}
+      </div>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-foreground hover:bg-muted"
-          >
-            <Bell className="h-5 w-5" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-foreground hover:bg-muted"
-          >
-            <MessageSquare className="h-5 w-5" />
-          </Button>
-          <ProfileDropdown>
-            <button className="flex gap-2 pr-3 pl-[5px] py-1 bg-[#EFF1F6] rounded-full items-center justify-center">
-              <UserAvatar />
-            </button>
-          </ProfileDropdown>
-        </div>
+      {/* Right Actions */}
+      <div className="flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="text-foreground hover:bg-muted"
+        >
+          <Bell className="h-5 w-5" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="text-foreground hover:bg-muted"
+        >
+          <MessageSquare className="h-5 w-5" />
+        </Button>
+        <ProfileDropdown>
+          <button className="flex gap-2 pr-3 pl-[5px] py-1 bg-[#EFF1F6] rounded-full items-center justify-center">
+            <UserAvatar />
+          </button>
+        </ProfileDropdown>
       </div>
     </nav>
   );

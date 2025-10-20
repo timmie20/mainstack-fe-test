@@ -1,4 +1,4 @@
-import type { ApiError, ApiResponse } from "@/types/queries";
+import type { ApiError } from "@/types/queries";
 import axios, { AxiosError } from "axios";
 
 const api = axios.create({
@@ -9,12 +9,9 @@ const api = axios.create({
 });
 
 // Generic GET request helper
-
-export const apiGet = async <T>(
-  url: string
-): Promise<ApiResponse<T> | ApiError> => {
+export const apiGet = async <T>(url: string): Promise<T | ApiError> => {
   try {
-    const response = await api.get<ApiResponse<T>>(url);
+    const response = await api.get<T>(url);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError && error.response) {
@@ -24,7 +21,6 @@ export const apiGet = async <T>(
         statusCode: error.response.status,
       };
     }
-
     return {
       success: false,
       message: "Network error or unexpected issue",

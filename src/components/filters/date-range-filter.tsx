@@ -63,8 +63,9 @@ export function DateRangeFilter({ value, onChange }: DateRangeFilterProps) {
                 {value.endDate || "End date"}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent className="w-full p-0" align="start">
               <Calendar
+                className="w-full"
                 mode="single"
                 selected={value.endDate ? new Date(value.endDate) : undefined}
                 onSelect={(date) =>

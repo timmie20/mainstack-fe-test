@@ -13,3 +13,11 @@ export const formatAmount = (amount: number) => {
     maximumFractionDigits: 2,
   })}`;
 };
+
+export function formatDateChart(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+}

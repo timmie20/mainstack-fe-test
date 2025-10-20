@@ -8,32 +8,37 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { Button } from "../ui/button";
+import type { ChartData } from "@/types";
 
 export const description = "A line chart";
 
 interface ChartLineDefaultProps {
   balance: string;
+  chartData: ChartData[];
 }
 
-const chartData = [
-  { month: "May 31", balance: 10 },
-  { month: "April 1", balance: 200 },
-  { month: "April 5", balance: 120 },
-  { month: "April 10", balance: 180 },
-  { month: "April 15", balance: 150 },
-  { month: "April 20", balance: 190 },
-  { month: "April 25", balance: 200 },
-  { month: "April 31", balance: 214 },
-];
+// const chartData = [
+//   { month: "May 31", balance: 10 },
+//   { month: "April 1", balance: 200 },
+//   { month: "April 5", balance: 120 },
+//   { month: "April 10", balance: 180 },
+//   { month: "April 15", balance: 150 },
+//   { month: "April 20", balance: 190 },
+//   { month: "April 25", balance: 200 },
+//   { month: "April 31", balance: 214 },
+// ];
 
 const chartConfig = {
   balance: {
-    label: "Desktop",
+    label: "Balance",
     color: "var(--chart-1)",
   },
 } satisfies ChartConfig;
 
-export function ChartLineDefault({ balance }: ChartLineDefaultProps) {
+export function ChartLineDefault({
+  balance,
+  chartData,
+}: ChartLineDefaultProps) {
   return (
     <div className="w-full">
       <div className="flex items-center gap-[64px]">

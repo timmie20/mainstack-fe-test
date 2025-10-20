@@ -23,3 +23,8 @@ export interface Transaction {
   type: "deposit" | "withdrawal";
   date: string;
 }
+
+export type ChartData = {
+  month: string;
+  balance: number;
+};

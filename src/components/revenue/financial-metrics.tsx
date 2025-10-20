@@ -1,9 +1,10 @@
-import type { WalletDataProps } from "@/types";
+import type { ChartData, WalletDataProps } from "@/types";
 import { StatCard } from "./stats-card";
 import { ChartLineDefault } from "./chart-line-default";
 
 interface FinancialMetricsProps {
   wallet?: WalletDataProps;
+  chartData: ChartData[];
 }
 
 export type MutatedData = {
@@ -11,7 +12,7 @@ export type MutatedData = {
   value: string;
 };
 
-export function FinancialMetrics({ wallet }: FinancialMetricsProps) {
+export function FinancialMetrics({ wallet, chartData }: FinancialMetricsProps) {
   const { balance, ...filteredData } = wallet || {};
 
   // format key/value pairs to allow easy map
@@ -27,7 +28,7 @@ export function FinancialMetrics({ wallet }: FinancialMetricsProps) {
   return (
     <div className="grid grid-cols-[2fr_1fr] gap-6 items-stretch">
       <div className="flex items-stretch flex-1">
-        <ChartLineDefault balance={balance ?? ""} />
+        <ChartLineDefault balance={balance ?? ""} chartData={chartData ?? []} />
       </div>
 
       <div className="flex flex-col justify-between p-4">

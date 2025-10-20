@@ -3,6 +3,8 @@ import { TransactionsList } from "@/components/revenue/transactions-list";
 import { getTransactions, getWallet } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 import type { ApiError } from "@/types/queries";
+import { formatDateChart } from "@/lib/helpers";
+import type { ChartData } from "@/types";
 
 // Type guard to check if result is an error
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,7 +38,13 @@ export default function Revenue() {
     queryFn: getAllData,
   });
 
-  console.log(data);
+  const chartData: ChartData[] =
+    data?.transactions
+      .map((transaction) => ({
+        month: formatDateChart(transaction.date),
+        balance: transaction.amount,
+      }))
+      .reverse() ?? [];
 
   if (isLoading) return <p>Loading all data...</p>;
   if (isError || !data) return <p>Failed to load data.</p>;
@@ -44,7 +52,10 @@ export default function Revenue() {
   return (
     <>
       <div className="max-w-[1160px] mx-auto px-2">
-        <FinancialMetrics wallet={data.walletData ?? []} />
+        <FinancialMetrics
+          wallet={data.walletData ?? []}
+          chartData={chartData}
+        />
         <TransactionsList transactions={data.transactions ?? []} />
       </div>
     </>

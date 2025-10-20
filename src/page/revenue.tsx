@@ -7,8 +7,6 @@ import type { ChartData } from "@/types";
 import { isApiError } from "@/lib/api";
 import Loader from "@/components/loader";
 
-// Type guard to check if result is an error
-
 async function getAllData() {
   const [transactions, walletData] = await Promise.all([
     getTransactions(),

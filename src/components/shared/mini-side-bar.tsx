@@ -27,7 +27,7 @@ const navItems = [
 
 export default function MiniSideBar() {
   return (
-    <aside className="fixed left-6 top-[40%] -translate-y-1/2 z-50 :hover-scale-75">
+    <aside className="fixed left-4 top-[310px] -translate-y-1/2 z-50 max-w-12 flex items-center w-full">
       <nav className="bg-background border border-border rounded-full shadow-lg p-3">
         <ul className="flex flex-col gap-3">
           {navItems.map((item) => {

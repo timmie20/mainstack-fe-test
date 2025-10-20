@@ -29,6 +29,8 @@ export const apiGet = async <T>(url: string): Promise<T | ApiError> => {
   }
 };
 
+// Type guard to check if result is an error
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isApiError(result: any): result is ApiError {
   return result && result.success === false;
